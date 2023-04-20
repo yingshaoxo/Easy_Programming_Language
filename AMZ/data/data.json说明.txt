@@ -1,0 +1,22 @@
+
+JSON数据格式
+
+其中 API -> *** -> Unicode 等于 true 则表明该API有A/W两个版本（A结尾为ANSI版本、W结尾为Unicode版）
+
+{
+    "API": {
+        "SendMessage": {
+            "Data": ".DLL命令 SendMessage, 整数型 ... \r\n",
+            "Unicode": true
+        }
+        ...
+    },
+    "CONST": {
+        "GW_MAX": ".常量 GW_MAX,5,,"
+        ...
+    },
+    "STRUCT": {
+        "MSG": ".数据类型 MSG, \r\n ... \r\n"
+        ...
+    }
+}

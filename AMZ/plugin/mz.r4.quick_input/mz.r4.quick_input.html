@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+
+<head>
+    <meta charset="GB2312" /><!-- 注意与文件编码一致 -->
+    <title>AmzPluginName</title>
+
+    <link rel="stylesheet" href="file:/src/ui/zui.css" />
+    <link rel="stylesheet" href="file:/src/ui/zui-theme.css" />
+    <link rel="stylesheet" href="file:/src/ui/common.css" />
+    <script src="file:/src/lib/jquery/jquery.js"></script>
+    <script src="file:/src/ui/zui.min.js"></script>
+
+</head>
+
+<body>
+    <table class="table">
+        <thead>
+            <tr>
+                <th width="90px">按键</th>
+                <th>输入内容</th>
+                <th width="120px">后续动作</th>
+                <th width="120px">动作参数</th>
+                <th width="40px"></th>
+            </tr>
+        </thead>
+        <tbody id="dataList">
+            <tr>
+                <td><input type="text" class="form-control" id="key" placeholder="键代码"></td>
+                <td><textarea class="form-control" rows="1" id="val" placeholder="欲输入内容"></textarea></td>
+                <td>
+                    <select class="form-control" id="func">
+                        <option value="">无</option>
+                        <option value="CL">光标-左移</option>
+                        <option value="CR">光标-右移</option>
+                        <option value="CU">光标-上移</option>
+                        <option value="CD">光标-下移</option>
+                    </select>
+                </td>
+                <td><input type="text" class="form-control" id="param" placeholder="多参数 '|' 分隔"></td>
+                <td><button class="btn" type="button" action="delItem" title="删除项"><i class="icon-trash"></i></button></td>
+            </tr>
+
+        </tbody>
+        <tfoot>
+            <tr>
+                <td colspan="5">
+                    <button class="btn btn-block" type="button" action='addItem'>
+                        <i class="icon icon-plus"></i> 添加
+                    </button>
+                </td>
+            </tr>
+        </tfoot>
+    </table>
+
+    <div class="alert">
+        <h4>使用方法：</h4>
+        <hr>
+        <p>如：按键=<code>Ctrl+'</code>；输入内容=<code>“”</code>；后续动作=<code>光标-左移</code>；动作参数=<code>1</code>；则代表按下<code>Ctrl+'</code>输入<code>“”</code>并左移光标<code>1</code>次。</p>
+        <p></p>
+    </div>
+    <div class="alert">
+        <h4>支持的键代码列表：</h4>
+        <hr>
+        <p>功能键：Ctrl　Shift</p>
+        <p>键：a~z　0~9　F1~F12　Num0~Num9</p>
+        <p>Num/　Num*　Num-　Num+　Num.</p>
+        <p>=　;　-　<　>　[　]　\　/　'　~　↑　↓　←　→</p>
+        <p>Backspace　Tab　Enter　Space</p>
+        <p></p>
+    </div>
+
+    <script>
+        var SendMsg = function (p1, p2, p3, p4, p5) { return parent.SendMsg(p1, p2, p3, p4, p5); };
+        var dataJson = [],
+            dataList = $('#dataList'),
+            dataListTemplate = dataList.html()
+            ;
+
+        Init();
+
+
+        function Init() {
+
+            dataList.html('');
+
+            var _tmp = SendMsg('API', 'read', 'dataJson', '');  // 读配置项
+
+            if (_tmp != '' && _tmp != null) {
+
+                dataJson = JSON.parse(_tmp);
+
+            } else {
+
+                dataJson = [
+                    { "key": "F11", "val": "&", "func": "", "param": "" },
+                    { "key": "F12", "val": "_", "func": "", "param": "" },
+
+                    { "key": "Ctrl+'", "val": "“”", "func": "CL", "param": "1" },
+                    { "key": "Ctrl+[", "val": "[]", "func": "CL", "param": "1" },
+                    { "key": "Ctrl+9", "val": "（）", "func": "CL", "param": "1" }
+
+                ];
+
+            }
+
+            for (var i in dataJson) {
+
+                dataList
+                    .append(dataListTemplate);
+
+                $('#dataList tr:eq(' + i + ') td:eq(0) #key').val(dataJson[i].key);
+                $('#dataList tr:eq(' + i + ') td:eq(1) #val').val(dataJson[i].val);
+                $('#dataList tr:eq(' + i + ') td:eq(2) #func').val(dataJson[i].func);
+                $('#dataList tr:eq(' + i + ') td:eq(3) #param').val(dataJson[i].param);
+
+            }
+
+        }
+
+        $('table').on('click', 'button', function () {
+
+            var _this = $(this),
+                _action = _this.attr('action')
+                ;
+
+            if (_action == 'addItem') {         // 增加项
+
+                dataList
+                    .append(dataListTemplate);
+
+                dataJson.push({});
+
+            } else if (_action == 'delItem') {  // 删除项
+
+                if (confirm("删除此项?") == true) {
+                    var _item = _this.parent().parent(),
+                        _index = _item.index()
+                        ;
+
+                    _item.remove();
+                    dataJson.splice(_index, 1);
+
+                    SendMsg('API', 'save', 'dataJson', JSON.stringify(dataJson));   // 写配置项
+
+                }
+
+            }
+
+        });
+
+        $('#dataList').on('blur', 'input[type=text],textarea', function () {
+
+            _saveITS($(this));
+
+        });
+
+        $('#dataList').on('change', 'select', function () {
+
+            _saveITS($(this));
+
+        });
+
+        function _saveITS(_this) {   // Input,Textare,Select
+
+            var
+                _item = _this.parent().parent(),
+                _index = _item.index(),
+
+                _key = _this.attr('id')
+                ;
+
+            dataJson[_index][_key] = _this.val();
+
+            SendMsg('API', 'save', 'dataJson', JSON.stringify(dataJson));   // 写配置项
+
+        }
+
+    </script>
+
+</body>
+
+</html>

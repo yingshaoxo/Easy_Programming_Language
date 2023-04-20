@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+
+<head>
+    <meta charset="GB2312" /><!-- 注意与文件编码一致 -->
+    <title>AmzPluginName</title>
+
+    <link rel="stylesheet" href="file:/src/ui/zui.css" />
+    <link rel="stylesheet" href="file:/src/ui/zui-theme.css" />
+    <link rel="stylesheet" href="file:/src/ui/common.css" />
+    <script src="file:/src/lib/jquery/jquery.js"></script>
+    <script src="file:/src/ui/zui.min.js"></script>
+
+</head>
+
+<body>
+
+    <div class="form-group">
+        <div class="checkbox">
+            <label><input type="checkbox" amz-autosave amz-name="NotOutput" checked> 自动保存源码不输出提示(会提示1次)</label>
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="checkbox">
+            <label><input type="checkbox" amz-autosave amz-name="FreeSave" checked> 仅在鼠标键盘空闲时(超过30秒)才执行自动保存</label>
+        </div>
+    </div>
+    <div class="input-group" style="width:380px;">
+        <span class="input-group-addon">每隔</span>
+        <input type="text" class="form-control" amz-autosave amz-name="SaveInterval" value="15">
+        <span class="input-group-addon">秒自动保存源码(只对已保存的源码有效)</span>
+    </div>
+
+</body>
+
+</html>

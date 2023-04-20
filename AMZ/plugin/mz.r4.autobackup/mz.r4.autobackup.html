@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+
+<head>
+    <meta charset="GB2312" /><!-- 注意与文件编码一致 -->
+    <title>AmzPluginName</title>
+
+    <link rel="stylesheet" href="file:/src/ui/zui.css" />
+    <link rel="stylesheet" href="file:/src/ui/zui-theme.css" />
+    <link rel="stylesheet" href="file:/src/ui/common.css" />
+    <script src="file:/src/lib/jquery/jquery.js"></script>
+    <script src="file:/src/ui/zui.min.js"></script>
+
+</head>
+
+<body>
+
+    <div class="input-group" style="width:192px;">
+        <span class="input-group-addon">备份间隔：</span>
+        <input type="text" class="form-control" amz-autosave amz-name="BackupInterval" value="5">
+        <span class="input-group-addon">分钟</span>
+    </div>
+    <div class="input-group" style="width:480px;">
+        <span class="input-group-addon">最大备份：</span>
+        <input type="text" class="form-control" amz-autosave amz-name="BackupMax" value="10">
+        <span class="input-group-addon">份（最大的备份数量，0为不限，超过将替换旧的）</span>
+    </div>
+    <div class="input-group">
+        <span class="input-group-addon">备份格式：</span>
+        <select amz-autosave amz-name="NameFormat" class="form-control">
+            <option value="0" selected="selected">名称_2018-08-01 12.00</option>
+            <option value="1">名称_2018年08月01日 12:00</option>
+            <option value="2">名称_201808011200</option>
+        </select>
+    </div>
+    <div class="input-group">
+        <span class="input-group-addon">备份路径：</span>
+        <input type="text" class="form-control" amz-autosave amz-name="BackupDir">
+        <span class="input-group-btn">
+            <button class="btn btn-default" type="button" amz-name="BackupDir" amz-action="folder">浏览</button>
+        </span>
+    </div>
+    <div class="form-group">
+        <label><input type="checkbox" amz-autosave amz-name="bBlackList"> 启用黑名单 (在黑名单中的源码名称将不会自动备份，每个一行，如：AMZ.e)</label>
+        <textarea class="form-control" amz-autosave amz-name="BlackList" rows="5" placeholder="每行一个文件名"></textarea>
+    </div>
+
+    <div class="alert">
+        <h4>备份路径</h4>
+        <hr>
+        <p><code>{pe}</code> = E 目录，如：<code>C:\program files\e\</code></p>
+        <p><code>{pa}</code> = AMZ 目录，如：<code>C:\program files\e\AMZ\Backup\</code></p>
+        <p><code>{pp}</code> = 源码 目录，如：<code>C:\源码\Backup\</code></p>
+        <p></p>
+        <p></p>
+    </div>
+    <div class="alert alert-primary with-icon">
+        <i class="icon-info-sign"></i>
+        <div class="content">自动备份前会强制保存源码</div>
+    </div>
+
+</body>
+
+</html>

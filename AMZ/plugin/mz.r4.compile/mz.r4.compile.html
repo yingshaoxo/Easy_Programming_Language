@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+
+<head>
+    <meta charset="GB2312" /><!-- 注意与文件编码一致 -->
+    <title>AmzPluginName</title>
+
+    <link rel="stylesheet" href="file:/src/ui/zui.css" />
+    <link rel="stylesheet" href="file:/src/ui/zui-theme.css" />
+    <link rel="stylesheet" href="file:/src/ui/common.css" />
+    <script src="file:/src/lib/jquery/jquery.js"></script>
+    <script src="file:/src/ui/zui.min.js"></script>
+
+</head>
+
+<body>
+
+    <fieldset>
+        <legend>基础设置</legend>
+
+        <div class="input-group">
+            <span class="input-group-addon">快捷键：</span>
+            <select class="form-control" amz-autosave amz-name="sKey">
+                <option value="null">无</option>
+                <option value="F7" selected>F7</option>
+                <option value="F11">F11</option>
+                <option value="F12">F12</option>
+            </select>
+        </div>
+
+        <div class="checkbox">
+            <label>
+                <input type="checkbox" amz-autosave amz-name="AsyncCompile"> 异步编译 (不建议使用)
+            </label>
+        </div>
+        
+        <div class="checkbox">
+            <label>
+                <input type="checkbox" amz-autosave amz-name="PreSave" checked> 编译前自动保存
+            </label>
+        </div>
+        <div class="checkbox">
+            <label>
+                <input type="checkbox" amz-autosave amz-name="PreMsgBox" checked> 编译前弹出确认框
+            </label>
+        </div>
+        <div class="checkbox">
+            <label>
+                <input type="checkbox" amz-autosave amz-name="DoneRun"> 编译完运行
+            </label>
+        </div>
+        <div class="checkbox">
+            <label>
+                <input type="checkbox" amz-autosave amz-name="DoneOpenDir"> 编译完打开目录
+            </label>
+        </div>
+        <div class="checkbox">
+            <label>
+                <input type="checkbox" amz-autosave amz-name="DoneBeep" checked> 编译完成提示音
+            </label>
+        </div>
+        <div class="checkbox">
+            <label>
+                <input type="checkbox" amz-autosave amz-name="PreOptimise"> 优化编译出来的程序，减少误报，优化程序体积(仅对智能静编生效[谨慎使用])
+            </label>
+        </div>
+        <div class="checkbox">
+            <label>
+                <input type="checkbox" amz-autosave amz-name="DoneOutputMD5"> 编译完成输出MD5(可能会影响速度)
+            </label>
+        </div>
+
+    </fieldset>
+
+    <fieldset>
+        <legend>
+            <label>
+                <input type="checkbox" amz-autosave amz-name="AutoSelect" checked> 开启自动执行模式
+            </label>
+        </legend>
+
+        <div class="input-group">
+            <span class="input-group-addon">编译模式：</span>
+            <select class="form-control" amz-autosave amz-name="AutoSelectPattern">
+                <option value="1">编译到上次的目录</option>
+                <option value="2" selected>编译到源码根目录</option>
+                <option value="3">编译到指定目录</option>
+            </select>
+        </div>
+        <div class="input-group">
+            <span class="input-group-addon">编译到指定目录：</span>
+            <input type="text" class="form-control" amz-autosave amz-name="AutoSelectDir">
+            <span class="input-group-btn">
+                <button class="btn btn-default" type="button" amz-name="AutoSelectDir" amz-action="folder">浏览</button>
+            </span>
+        </div>
+
+        <div class="input-group">
+            <span class="input-group-addon">编译名：</span>
+            <select class="form-control" amz-autosave amz-name="AutoSelectFileName">
+                <option value="1">用源码文件名作为编译的文件名</option>
+                <option value="2" selected>每次编译不同文件名</option>
+                <option value="3">手动输入</option>
+            </select>
+        </div>
+
+    </fieldset>
+
+    <fieldset>
+        <legend>
+            <label>
+                <input type="checkbox" amz-autosave amz-name="RunCMD"> 编译成功后执行以下命令行（每组1行）
+            </label>
+            <a href="http://arae.cc/post/25756.html">相关说明</a>
+        </legend>
+
+        <div class="form-group">
+            <textarea class="form-control" amz-autosave amz-name="RunCMDCode" rows="5" placeholder="{p}upx.exe --lzma {f}{h}" /></textarea>
+        </div>
+
+    </fieldset>
+
+
+</body>
+
+</html>

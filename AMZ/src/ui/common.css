@@ -1,0 +1,95 @@
+/* 鼠标选中色 */
+/*::selection {
+    background: rgba(68, 171, 255, 0.8);
+    color:#fff;
+}*/
+
+/*	滚动条	*/
+::-webkit-scrollbar {
+    width: 12px;
+    height: 12px;
+}
+::-webkit-scrollbar-button:start:decrement,::-webkit-scrollbar-button:end:increment {
+    width: 0;
+    height: 0;
+}
+::-webkit-scrollbar-track-piece {
+    background-clip: padding-box;
+    background-color: rgba(0,0,0,0);
+    border: solid #44403a;
+}
+::-webkit-scrollbar-track-piece:vertical {
+    border-width: 0;
+}
+::-webkit-scrollbar-track-piece:horizontal {
+    border-width: 0;
+}
+::-webkit-scrollbar-thumb {
+    background-color: rgba(0,0,0,.2);
+    background-clip: padding-box;
+    border: solid transparent;
+    border-radius: 0;
+}
+::-webkit-scrollbar-thumb:vertical {
+    border-width: 1px 1px 1px 2px;
+    min-height: 24px;
+}
+::-webkit-scrollbar-thumb:horizontal {
+    border-width: 2px 1px 1px 1px;
+    min-width: 24px;
+}
+::-webkit-scrollbar-thumb:vertical:hover {
+    background-color: rgba(0,0,0,.4);
+}
+::-webkit-scrollbar-thumb:horizontal:hover {
+    background-color: rgba(0,0,0,.4);
+}
+
+
+body {
+    margin: 10px !important;
+}
+
+/*    ...    */
+
+.select-none {   /* 禁止选择 */
+    cursor: default;
+    -webkit-user-select: none;
+}
+
+.bg-white {
+    color: #353535;
+    background-color: #fff;
+}
+
+/*    PluginPage    */
+
+    /*  分组框  */
+fieldset {
+    padding: 10px 15px;
+    margin: 0 2px 15px 2px;
+    border: 1px solid #ddd;
+}
+fieldset > legend {
+    width: auto;
+    padding: 0 10px 0 10px;
+    margin: 0;
+    font-size: inherit;
+    font-weight: 600;
+    line-height: inherit;
+    color: #728597;
+    border: none;
+}
+fieldset > legend > label {
+    font-weight: inherit;
+    color: inherit;
+}
+    
+    /*  表单类  */
+.input-group {
+    margin-bottom: 15px;
+}
+    
+.form-group label, .input-group label {
+    font-weight: inherit;
+}

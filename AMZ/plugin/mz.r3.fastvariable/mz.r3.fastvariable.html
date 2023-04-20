@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+
+<head>
+    <meta charset="GB2312" /><!-- 注意与文件编码一致 -->
+    <title>AmzPluginName</title>
+
+    <link rel="stylesheet" href="file:/src/ui/zui.css" />
+    <link rel="stylesheet" href="file:/src/ui/zui-theme.css" />
+    <link rel="stylesheet" href="file:/src/ui/common.css" />
+    <script src="file:/src/lib/jquery/jquery.js"></script>
+    <script src="file:/src/ui/zui.min.js"></script>
+
+</head>
+
+<style>
+    td:first-of-type {
+        text-align: right;
+        width: 100px;
+    }
+</style>
+
+<body>
+    <div class="alert alert-info">
+        <strong>注:</strong>
+        多个关键词请用 <code>,</code> 分隔，关键词不区分大小写。
+    </div>
+
+    <div class="panel">
+        <div class="panel-heading"><strong>范围</strong>&nbsp;&nbsp;<small class="text-muted">(前缀)</small></div>
+        <table class="table">
+            <tbody>
+                <tr>
+                    <td>默认位置</td>
+                    <td>
+                        <select class="form-control input-sm" amz-autosave amz-name="ExtentDefault">
+                            <option value="1">全局变量</option>
+                            <option value="2">程序集变量</option>
+                            <option value="3" selected>局部变量</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td>全局</td>
+                    <td><input type="text" class="form-control input-sm" value="g_,q_,全_,全局_" amz-autosave amz-name="ExtentGlobal"></td>
+                </tr>
+                <tr>
+                    <td title="程序集">模块</td>
+                    <td><input type="text" class="form-control input-sm" value="m_,c_,集_,程序集_" amz-autosave amz-name="ExtentMod"></td>
+                </tr>
+                <tr>
+                    <td>局部</td>
+                    <td><input type="text" class="form-control input-sm" value="l_,j_,局_,局部_" amz-autosave amz-name="ExtentLocal"></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="panel">
+        <div class="panel-heading"><strong>类型</strong>&nbsp;&nbsp;<small class="text-muted">(前缀，范围 之后)</small></div>
+        <table class="table">
+            <tbody>
+                <tr>
+                    <td>默认类型</td>
+                    <td>
+                        <select class="form-control input-sm" amz-autosave amz-name="TypeDefault">
+                            <option value="0">通用型</option>
+                            <option value="1">字节型</option>
+                            <option value="2">短整数型</option>
+                            <option value="3" selected>整数型</option>
+                            <option value="4">长整数型</option>
+                            <option value="5">小数型</option>
+                            <option value="6">双精度小数型</option>
+                            <option value="7">逻辑型</option>
+                            <option value="8">日期时间型</option>
+                            <option value="9">文本型</option>
+                            <option value="10">字节集</option>
+                            <option value="11">子程序指针</option>
+                        </select>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>通用型</td>
+                    <td><input type="text" class="form-control input-sm" value="all,al" amz-autosave amz-name="TypeAll"></td>
+                </tr>
+                <tr>
+                    <td>字节型</td>
+                    <td><input type="text" class="form-control input-sm" value="byte,by" amz-autosave amz-name="TypeByte"></td>
+                </tr>
+                <tr>
+                    <td>短整数型</td>
+                    <td><input type="text" class="form-control input-sm" value="short,dz,sh" amz-autosave amz-name="TypeShort"></td>
+                </tr>
+                <tr>
+                    <td>整数型</td>
+                    <td><input type="text" class="form-control input-sm" value="int,dw,n" amz-autosave amz-name="TypeInt"></td>
+                </tr>
+                <tr>
+                    <td>长整数型</td>
+                    <td><input type="text" class="form-control input-sm" value="long,l,cz" amz-autosave amz-name="TypeInt64"></td>
+                </tr>
+                <tr>
+                    <td>小数型</td>
+                    <td><input type="text" class="form-control input-sm" value="float,fl,xs,f" amz-autosave amz-name="TypeFloat"></td>
+                </tr>
+                <tr>
+                    <td>双精度小数型</td>
+                    <td><input type="text" class="form-control input-sm" value="double,dou" amz-autosave amz-name="TypeDouble"></td>
+                </tr>
+                <tr>
+                    <td>逻辑型</td>
+                    <td><input type="text" class="form-control input-sm" value="bool,bl" amz-autosave amz-name="TypeBool"></td>
+                </tr>
+                <tr>
+                    <td>日期时间型</td>
+                    <td><input type="text" class="form-control input-sm" value="date,time,dt" amz-autosave amz-name="TypeDateTime"></td>
+                </tr>
+                <tr>
+                    <td>文本型</td>
+                    <td><input type="text" class="form-control input-sm" value="sz,str,text,txt,wenben,wb" amz-autosave
+                            amz-name="TypeText"></td>
+                </tr>
+                <tr>
+                    <td>字节集</td>
+                    <td><input type="text" class="form-control input-sm" value="bin" amz-autosave amz-name="TypeBin"></td>
+                </tr>
+                <tr>
+                    <td>子程序指针</td>
+                    <td><input type="text" class="form-control input-sm" value="func" amz-autosave amz-name="TypeSubPtr"></td>
+                </tr>
+
+            </tbody>
+        </table>
+    </div>
+
+    <div class="panel">
+        <div class="panel-heading"><strong>参数</strong>&nbsp;&nbsp;<small class="text-muted">(关键词，范围类型 之后)</small></div>
+        <table class="table">
+            <tbody>
+                <tr>
+                    <td>数组</td>
+                    <td><input type="text" class="form-control input-sm" value="ary,array" amz-autosave amz-name="TypeParamArray"></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+
+    <div class="alert">
+        <div class="content">
+            <h4>用途</h4>
+            <hr>
+            <p>减少变量定义的时间。<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;如：<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;<code>g_szRunPath ＝ “\”</code> 将 <code>g_szRunPath</code> 定义为全局文本型变量。<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;<code>m_szTempArray ＝ {“1”,“2”}</code> 将 <code>m_szTempArray</code> 定义为程序集文本型数组变量。
+            </p>
+        </div>
+    </div>
+
+    <div class="alert">
+        <div class="content">
+            <h4>前缀</h4>
+            <hr>
+            <p>范围前缀必须在变量名的最左侧，类型前缀紧跟范围前缀之后，如果没有范围前缀将自动识别变量名最左侧类型前缀。</p>
+        </div>
+    </div>
+
+    <div class="alert alert-primary">
+        <strong>注：</strong> 此插件仅限 易语言5.7 以上版本使用。
+    </div>
+
+
+</body>
+
+</html>

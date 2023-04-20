@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+
+<head>
+    <meta charset="GB2312" />
+    <title>支持库设置</title>
+
+    <link rel="stylesheet" href="file:/src/ui/zui.css" />
+    <link rel="stylesheet" href="file:/src/ui/zui-theme.css" />
+    <link rel="stylesheet" href="file:/src/ui/common.css" />
+    <script src="file:/src/lib/jquery/jquery.js"></script>
+    <script src="file:/src/ui/zui.min.js"></script>
+
+</head>
+
+<body>
+
+    <!-- 
+        设置页面可直接在设置程序内调试
+	    {File} == 应用目录(\AM\APP\***\)
+    -->
+
+    <!-- 编辑框 1 -->
+    <div class="form-group">
+        <label>Tools_背景色：</label>
+        <input type="text" class="form-control" placeholder="填写htm颜色值" amz-autosave amz-name="Tools_bBgColor" value="#fff" />
+    </div>
+
+    <div class="form-group">
+        <label>Tools_前景色：</label>
+        <input type="text" class="form-control" placeholder="填写htm颜色值" amz-autosave amz-name="Tools_iTileColor" value="#555" />
+    </div>
+
+
+    <!-- 危险区 -->
+    <fieldset style="border: 2px solid #d73a49;">
+        <legend style="color: #d73a49">危险区</legend>
+
+        <button class="btn btn-default" type="button" data-name="删除无效配置文件" data-action="APPSET">删除无效配置文件</button>
+
+    </fieldset>
+
+    <script>
+
+        var sss = new $.zui.Messager('还没写呢。。', {
+                    type: 'special',
+                    //placement: 'center',
+                });
+
+        $('[data-action="APPSET"]').on('click', function () {
+            sss.show();
+        });
+
+    </script>
+
+</body>
+
+</html>

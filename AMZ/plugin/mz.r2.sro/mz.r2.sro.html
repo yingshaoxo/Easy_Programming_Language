@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+
+<head>
+    <meta charset="GB2312" /><!-- 注意与文件编码一致 -->
+    <title>AmzPluginName</title>
+
+    <link rel="stylesheet" href="file:/src/ui/zui.css" />
+    <link rel="stylesheet" href="file:/src/ui/zui-theme.css" />
+    <link rel="stylesheet" href="file:/src/ui/common.css" />
+    <script src="file:/src/lib/jquery/jquery.js"></script>
+    <script src="file:/src/ui/zui.min.js"></script>
+
+</head>
+
+<style>
+    .checkbox label > .text-muted{
+        margin-left: 10px;
+    }
+</style>
+
+<body>
+
+    <fieldset>
+        <legend>修复</legend>
+        <div class="form-group">
+            <div class="checkbox">
+                <label><input type="checkbox" amz-autosave amz-name="R30t" checked> 修复易语言刚打开30秒内无法编译程序 <small class="text-muted">重启生效，仅支持5.5、5.6</small></label>
+            </div>
+        </div>
+    </fieldset>
+
+    <fieldset>
+        <legend>优化</legend>
+        <div class="form-group">
+            <div class="checkbox">
+                <label><input type="checkbox" amz-autosave amz-name="OEnterIcon" checked> 优化输入提示列表图标 <small class="text-muted">重启生效</small></label>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="checkbox">
+                <label><input type="checkbox" amz-autosave amz-name="OF1Unfold" checked> F1键展开当前命令参数表</label>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="checkbox">
+                <label><input type="checkbox" amz-autosave amz-name="OAutoTab"> 自动切换工作夹(根据当前编辑窗口类型自动切换 [程序/属性] ) <small class="text-muted">重启生效</small></label>
+            </div>
+        </div>
+
+    </fieldset>
+
+    <fieldset>
+        <legend>屏蔽</legend>
+        <div class="form-group">
+            <div class="checkbox">
+                <label><input type="checkbox" amz-autosave amz-name="SWinStarting" checked> 屏蔽窗口，起始页、启动画面。</label>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="checkbox">
+                <label><input type="checkbox" amz-autosave amz-name="SMsgBoxEcUp" checked> 以下易模块文件需要更新其引用信息，已经为您自动更新。 <span class="text-muted">执行：更新</span></label>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="checkbox">
+                <label><input type="checkbox" amz-autosave amz-name="SMsgBoxToEcomDir" checked> 编译当前易模块程序到其发布版本成功 <span class="text-muted">执行：不导入ecom目录</span></label>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="checkbox">
+                <label><input type="checkbox" amz-autosave amz-name="SMsgBoxEcSameName" checked> 有同文件名的易模块存在！</label>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="checkbox">
+                <label><input type="checkbox" amz-autosave amz-name="SMsgBoxNewWinOpen"> 当前系统正在编辑一份易语言程序，已经为您在新窗口打开。</label>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="checkbox">
+                <label><input type="checkbox" amz-autosave amz-name="SMsgBoxTamper"> 发现此易语言源程序内下列子程序中存在非法伪装篡改的代码</label>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="checkbox">
+                <label><input type="checkbox" amz-autosave amz-name="SMsgBoxDataFailure"> 发现不可识别的[易包信息段]，其数据已被跳过！</label>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="checkbox">
+                <label><input type="checkbox" amz-autosave amz-name="SMsgBoxCopyExtFile" checked> 是否把需要支持库/易模块等外部文件一并复制到该目录? <span class="text-muted">执行：不复制</span></label>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="checkbox">
+                <label><input type="checkbox" amz-autosave amz-name="SMsgBoxDifferVer"> 发现另一不同软件版本的易语言系统正在运行，两者混用容易产生问题...</label>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="checkbox">
+                <label><input type="checkbox" amz-autosave amz-name="SMsgBoxEpackEc" checked> 编译当前易包'*'所对应的易模块程序'*'成功... <span class="text-muted">执行：不导入ecom目录</span></label>
+            </div>
+        </div>
+    </fieldset>
+
+
+</body>
+
+<script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</script>
+
+</html>
